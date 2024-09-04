@@ -66,7 +66,7 @@ function Home() {
             </ul>
           </div>
 
-          <div className="w-full md:w-[45%] relative bg-[url('./coffee-image.jpg')] bg-cover bg-right z-10">
+          <div className="w-full md:w-[45%] relative bg-[url('../coffee-image.jpg')] bg-cover bg-right z-10">
             <div className="px-12 pt-[50%] flex flex-col md:hidden text-white">
               <h2 className="text-3xl font-bold my-8">From Crop to Cup</h2>
               <p className="text-[12px] mb-10">
