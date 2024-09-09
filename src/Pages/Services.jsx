@@ -7,12 +7,13 @@ import axios from 'axios'
 
 const items = 4; 
 const Services = React.forwardRef(function Services (props, ref) {
-
+  const [loading, setLoading] = useState(true)
   const [services, setServices] = useState([]);
 
   useEffect(() => {
     axios.get(`https://himalayanjava-server.onrender.com/service`).then((res) => {
       setServices(res.data.services);
+      setLoading(false)
     });
   }, []);
 
@@ -40,7 +41,7 @@ const Services = React.forwardRef(function Services (props, ref) {
       {paginatedServices.map((page, index) => (
           <div key={index} className="grid grid-cols-2 grid-rows-2 gap-x-10 gap-y-3 p-4 mb-20">
             {page.map((service, serviceIndex) => (
-              <ServiceDetail key={serviceIndex} title={service.title} description={service.description} image={service.image}/>
+              <ServiceDetail key={serviceIndex} title={service.title} description={service.description} image={service.image} loading={loading}/>
             ))}
           </div>
         ))}

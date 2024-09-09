@@ -7,11 +7,14 @@ import axios from 'axios';
 const items = 8; 
 
 const Location = React.forwardRef(function Location(props, ref) {
+  const [loading, setLoading] = useState(true) 
   const [locations, setLocations] = useState([]);
 
   useEffect(() => {
     axios.get(`https://himalayanjava-server.onrender.com/outlet`).then((res) => {
       setLocations(res.data.outlets);
+      setLoading(false)
+      console.log(res.data.outlets)
     });
   }, []);
 
@@ -36,7 +39,7 @@ const Location = React.forwardRef(function Location(props, ref) {
         {paginatedLocations.map((page, index) => (
           <div key={index} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-2 gap-10 p-4 mb-20">
             {page.map((location, locIndex) => (
-              <LocationDetail key={locIndex} name={location.location} image={location.image} />
+              <LocationDetail key={locIndex} name={location.location} image={location.image} loading={loading} date={location.createdAt} special={location.special}/>
             ))}
           </div>
         ))}

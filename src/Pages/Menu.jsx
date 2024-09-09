@@ -7,11 +7,13 @@ import axios from 'axios';
 const items = 15; 
 
 const Menu = React.forwardRef(function Menu(props, ref) {
+  const [loading, setLoading] = useState(true)
   const [menus, setMenus] = useState([]);
 
   useEffect(() => {
     axios.get(`https://himalayanjava-server.onrender.com/menu`).then((res) => {
       setMenus(res.data.menus);
+      setLoading(false)
     });
   }, []);
 
@@ -33,7 +35,7 @@ const Menu = React.forwardRef(function Menu(props, ref) {
       {paginatedMenus.map((page, index) => (
           <div key={index} className="bg-orange-50 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:grid-rows-5 gap-y-10 mb-20 p-10 rounded-xl">
             {page.map((menu, menuIndex) => (
-              <MenuDetail key={menuIndex} name={menu.menuName} image={menu.image} price={menu.menuPrice}/>
+              <MenuDetail key={menuIndex} name={menu.menuName} image={menu.image} price={menu.menuPrice} loading={loading}/>
             ))}
           </div>
         ))}
