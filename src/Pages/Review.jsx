@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
 function Review() {
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
   const [formErrors, setFormErrors] = useState([]);
   const [review, setReview] = useState({
@@ -56,6 +57,7 @@ function handleClick(index){
           image: null,
           comment:""
         })
+        navigate("/");
         setLoading(false);
       })
       .catch((err) => {
@@ -172,7 +174,6 @@ function handleClick(index){
           Submit Review
         </button>
       </form>
-      <ToastContainer/>
     </div>
   );
 }

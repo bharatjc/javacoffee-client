@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Header from "../Components/Header";
 import Services from "../Pages/Services";
 import Location from "../Pages/Location";
@@ -9,6 +9,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function Home() {
   const homeRef = useRef(null);

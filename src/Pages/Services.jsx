@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel } from 'react-responsive-carousel';
 import ServiceDetail from '../Components/ServiceDetail'
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 
+const items = 4; 
 const Services = React.forwardRef(function Services (props, ref) {
 
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    axios.get(`https://himalayanjava-server.onrender.com/service`).then((res) => {
+      setServices(res.data.services);
+    });
+  }, []);
+
+  function getDesiredServices(services){
+    const paginated = [];
+    for (let i = 0; i < services.length; i += items) {
+      paginated.push(services.slice(i, i + items));
+    }
+    return paginated;
+  };
+
+  const paginatedServices = getDesiredServices(services);
   return (
     <div ref={ref} className='w-full px-10 grid grid-cols-4 md:grid-cols-12 gap-4 my-16'>
       <div className='col-span-4 md:col-span-4 mb-10'>
@@ -18,20 +37,13 @@ const Services = React.forwardRef(function Services (props, ref) {
       <div className='flex flex-wrap col-span-4 md:col-span-8'>
       
       <Carousel showArrows={false} showStatus={false} swipeable={true}showThumbs={false}>
-      <div className="grid grid-cols-2 grid-rows-2 gap-x-10 gap-y-3 p-4">
-        <ServiceDetail title="Nepali Coffee Beans" description="Himalayan Java offers its customers with locally brewed taste." image="./nepali-coffee.png"/>
-        <ServiceDetail title="Barista Training" description="Himalayan Java Barista Coffee School was introduced to promote the culture of vocational training in Nepal." image="./barista-training.webp"/>
-        <ServiceDetail title="Bakery Equipments" description="Himalayan Java is the sole distributor of various coffee equipments and products in Nepal." image="./bakery-shop.webp"/>
-        <ServiceDetail title="Fresh Bakery Items" description="We provide you a wide variety of fresh bakery items." image="./bakery.webp"/>
-      </div>
-
-
-      <div className="grid grid-cols-2 grid-rows-2 gap-4 p-4">
-        <ServiceDetail title="Nepali Coffee Beans" description="Himalayan Java offers its customers with locally brewed taste." />
-        <ServiceDetail title="Nepali Coffee Beans" description="Himalayan Java offers its customers with locally brewed taste." />
-        <ServiceDetail title="Nepali Coffee Beans" description="Himalayan Java offers its customers with locally brewed taste." />
-        <ServiceDetail title="Nepali Coffee Beans" description="Himalayan Java offers its customers with locally brewed taste." />
-      </div>
+      {paginatedServices.map((page, index) => (
+          <div key={index} className="grid grid-cols-2 grid-rows-2 gap-x-10 gap-y-3 p-4 mb-20">
+            {page.map((service, serviceIndex) => (
+              <ServiceDetail key={serviceIndex} title={service.title} description={service.description} image={service.image}/>
+            ))}
+          </div>
+        ))}
     </Carousel>
 
       </div>

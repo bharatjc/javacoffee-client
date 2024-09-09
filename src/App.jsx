@@ -24,7 +24,7 @@ function App() {
       ),
     },
     {
-      path: "location",
+      path: "outlets",
       element: <Location/>,
     },
     {
