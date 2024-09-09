@@ -3,6 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import MenuDetail from '../Components/MenuDetail';
 import axios from 'axios';
 
 const items = 15; 
@@ -32,28 +33,32 @@ const Menu = React.forwardRef(function Menu(props, ref) {
       <h2 className='text-3xl md:text-4xl font-bold text-black my-10'>Menu</h2>
       <p className='text-center w-[90%] md:w-[55%] text-lg text-gray-500 font-semibold mb-10'>
       While most of the food in our menu changes from kitchen to kitchen and from cook to cook, what remains the same is our product from the bakery.</p>
+
+      {loading ? (
+          <div className="w-full bg-orange-50 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:grid-rows-5 gap-y-10 mb-20 p-10 rounded-xl">
+           {Array(items).fill(0).map((_, i) => (
+              <div key={i} className='w-full h-full flex items-center px-0 md:px-4 gap-3'>
+                <Skeleton className="rounded-xl w-[150px] h-[150px]" />
+                <div>
+                <Skeleton className="w-[120px] h-[30px]" />
+                <Skeleton className="w-[100px] h-[30px]" />
+                </div>
+                
+              </div>
+            ))}
+          </div>
+        ):
+
       <Carousel showArrows={false} showStatus={false} swipeable={true}showThumbs={false}>
       {paginatedMenus.map((page, index) => (
           <div key={index} className="bg-orange-50 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:grid-rows-5 gap-y-10 mb-20 p-10 rounded-xl">
             {page.map((menu, menuIndex) => (
-              <div key={menuIndex} className='w-full h-full flex items-center px-0 md:px-4 rounded-xl'>
-              <div className='md:w-full lg:w-[45%] h-24 md:h-28 lg:h-[140px] overflow-hidden bg-cover mr-4'>
-              {
-                loading? <Skeleton className="rounded-xl w-full h-full" />:<img src={menu.image} alt="" className='w-[100px] h-full rounded-md'/>
-              }  
-              </div>
-              <div className='flex flex-col justify-center'>
-              <h2 className='text-center md:text-lg font-semibold my-1 '>{
-                loading?<Skeleton className="rounded-xl w-[100px] h-full" />:menu.menuName}</h2>
-              <p className='text-start font-semibold text-slate-400'> {
-                loading?<Skeleton className="rounded-xl w-full h-full" />:    `Rs. ${menu.menuPrice}`}</p>
-              </div>
-            </div>
+              <MenuDetail key={menuIndex} name={menu.menuName} image={menu.image} price={menu.menuPrice}/>
             ))}
           </div>
         ))}
         </Carousel>
-
+}
     </div>
   )
 })
