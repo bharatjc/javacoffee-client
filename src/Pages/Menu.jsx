@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel } from 'react-responsive-carousel';
-import MenuDetail from '../Components/MenuDetail';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 import axios from 'axios';
 
 const items = 15; 
@@ -35,7 +36,19 @@ const Menu = React.forwardRef(function Menu(props, ref) {
       {paginatedMenus.map((page, index) => (
           <div key={index} className="bg-orange-50 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:grid-rows-5 gap-y-10 mb-20 p-10 rounded-xl">
             {page.map((menu, menuIndex) => (
-              <MenuDetail key={menuIndex} name={menu.menuName} image={menu.image} price={menu.menuPrice} loading={loading}/>
+              <div key={menuIndex} className='w-full h-full flex items-center px-0 md:px-4 rounded-xl'>
+              <div className='md:w-full lg:w-[45%] h-24 md:h-28 lg:h-[140px] overflow-hidden bg-cover mr-4'>
+              {
+                loading? <Skeleton className="rounded-xl w-full h-full" />:<img src={menu.image} alt="" className='w-[100px] h-full rounded-md'/>
+              }  
+              </div>
+              <div className='flex flex-col justify-center'>
+              <h2 className='text-center md:text-lg font-semibold my-1 '>{
+                loading?<Skeleton className="rounded-xl w-[100px] h-full" />:menu.menuName}</h2>
+              <p className='text-start font-semibold text-slate-400'> {
+                loading?<Skeleton className="rounded-xl w-full h-full" />:    `Rs. ${menu.menuPrice}`}</p>
+              </div>
+            </div>
             ))}
           </div>
         ))}
