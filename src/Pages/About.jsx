@@ -22,10 +22,10 @@ function About() {
         We believe that coffee brings people together. That's why our cafe is designed to be a welcoming space for everyone—whether you're meeting friends, working remotely, or simply enjoying a moment of solitude. With cozy seating, free Wi-Fi, and a menu filled with delicious treats, our cafe is the perfect place to relax, recharge, and reconnect.
         </p>
         <div className='flex flex-col md:flex-row w-full justify-center gap-5 my-10'>
-          <div className="h-[350px] w-full md:w-[45%] bg-[url('./location.jpg')] bg-cover rounded-sm flex justify-center items-center">
+          <div className="h-[350px] w-full md:w-[45%] bg-[url('../location.jpg')] bg-cover rounded-sm flex justify-center items-center">
           <Link to="/outlets" className='text-slate-200 text-2xl font-bold'>Our Location</Link>
           </div>
-          <div className="h-[350px] w-full md:w-[25%] bg-[url('./coffee.jpg')] bg-cover rounded-sm flex justify-center items-center">
+          <div className="h-[350px] w-full md:w-[25%] bg-[url('../coffee.jpg')] bg-cover rounded-sm flex justify-center items-center">
           <Link to="/menu" className='text-slate-200 text-2xl font-bold'>Menu</Link></div>
         </div>
       </div>
