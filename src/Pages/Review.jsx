@@ -64,6 +64,7 @@ function handleClick(index){
         setLoading(false);
         let errors = err.response?.data?.errors;
         if (err?.response?.status === 400 && errors) {
+          toast.error(err.response.data.msg, { autoClose: 2000 });
           setFormErrors(errors);
         } else {
           toast.error("Something went wrong", { autoClose: 2000 });
@@ -96,6 +97,9 @@ function handleClick(index){
             onChange={handleChange}
             className={`w-full p-2 border rounded`}
           />
+          <p className="text-[12px] text-red-500">
+                  {formErrors.find(error => error.field === "name")?.message}
+                </p>
         </div>
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
@@ -110,6 +114,9 @@ function handleClick(index){
             onChange={handleChange}
             className={`w-full p-2 border rounded`}
           />
+          <p className="text-[12px] text-red-500">
+                  {formErrors.find(error => error.field === "email")?.message}
+                </p>
         </div>
         <div>
           <label htmlFor="profession" className="block text-sm font-medium text-gray-700 mb-1">
@@ -119,11 +126,13 @@ function handleClick(index){
           id='profession'
             type="text"
             name="profession"
-            required
             value={review.profession}
             onChange={handleChange}
             className={`w-full p-2 border rounded`}
           />
+          <p className="text-[12px] text-red-500">
+                  {formErrors.find(error => error.field === "profession")?.message}
+                </p>
         </div>
         <div>
         <label htmlFor="image" className="font-semibold">
@@ -164,7 +173,11 @@ function handleClick(index){
             value={review.comment}
             onChange={handleChange}
             className="w-full p-2 border rounded"
-          ></textarea>
+          >
+            <p className="text-[12px] text-red-500">
+                  {formErrors.find(error => error.field === "comment")?.message}
+                </p>
+          </textarea>
         </div>
         <button
           type="submit"

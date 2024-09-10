@@ -31,8 +31,9 @@ function handleSubmit(e) {
       navigate("/");
     })
     .catch((err) => {
-      if (err.response.status) {
+      if (err.response.status === 400 && errors) {
         toast.error(err.response.data.msg, { autoClose: 2000 });
+        setFormErrors(err.response.data.errors)
       } else {
         toast.error("Something went wrong!", {
           position: "top-right",
@@ -68,6 +69,9 @@ function handleSubmit(e) {
             onChange={handleChange}
             className="w-full p-2 border rounded text-sm"
           />
+           <p className="text-[12px] text-red-500">
+                  {formErrors.find(error => error.field === "name")?.message}
+                </p>
         </div>
         <div>
           <label htmlFor='email' className="block text-sm font-medium text-gray-700 mb-1">
@@ -81,6 +85,9 @@ function handleSubmit(e) {
             onChange={handleChange}
             className="w-full p-2 border rounded text-sm"
           />
+          <p className="text-[12px] text-red-500">
+                  {formErrors.find(error => error.field === "email")?.message}
+                </p>
         </div>
         <div>
           <label htmlFor='phone' className="block text-sm font-medium text-gray-700 mb-1">
@@ -94,6 +101,9 @@ function handleSubmit(e) {
             onChange={handleChange}
             className="w-full p-2 border rounded border-gray-300 text-sm"
           />
+          <p className="text-[12px] text-red-500">
+                  {formErrors.find(error => error.field === "phone")?.message}
+                </p>
         </div>
         <div>
           <label htmlFor='subject' className="block text-sm font-medium text-gray-700 mb-1">
@@ -107,6 +117,9 @@ function handleSubmit(e) {
             onChange={handleChange}
             className="w-full p-2 border rounded text-sm"
           />
+          <p className="text-[12px] text-red-500">
+                  {formErrors.find(error => error.field === "subject")?.message}
+                </p>
         </div>
         <div>
           <label htmlFor='message' className="block text-sm font-medium text-gray-700 mb-1">
@@ -120,6 +133,9 @@ function handleSubmit(e) {
             onChange={handleChange}
             className="w-full p-2 border rounded text-sm"
           ></textarea>
+          <p className="text-[12px] text-red-500">
+                  {formErrors.find(error => error.field === "message")?.message}
+                </p>
         </div>
         <button
           type="submit"
