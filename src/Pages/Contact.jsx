@@ -31,7 +31,7 @@ function handleSubmit(e) {
       navigate("/");
     })
     .catch((err) => {
-      if (err.response.status === 400 && errors) {
+      if (err.response.status === 400 && err) {
         toast.error(err.response.data.msg, { autoClose: 2000 });
         setFormErrors(err.response.data.errors)
       } else {
