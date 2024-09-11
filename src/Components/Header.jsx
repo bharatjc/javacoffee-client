@@ -15,7 +15,8 @@ function Header({ scrollToSection }) {
 
 {
   menu && <ul className='w-1/2 h-full bg-red-950 fixed top-0 left-0 py-5 px-2'>
-<li className='pl-3 pb-1 mb-5 flex justify-between border-b-[1px]'><p>About</p> <RxCross2 onClick={()=>{
+<li className='pl-3 pb-1 mb-5 flex justify-between border-b-[1px]'><p>
+  <Link to="/about">About</Link></p> <RxCross2 onClick={()=>{
   setMenu(!menu)
 }}/></li>
 <li className='pl-3 pb-1 mb-5 border-b-[1px]'><button onClick={() => scrollToSection('services')}>Services</button> </li>
