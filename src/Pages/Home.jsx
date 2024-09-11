@@ -9,8 +9,14 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 function Home() {
+
+const visitor = useSelector((store)=>{
+  return store.visitor.value
+})
+
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
   const servicesRef = useRef(null);
@@ -31,6 +37,7 @@ function Home() {
       console.warn(`Section '${section}' does not exist.`);
     }
   };
+  
 
   return (
     <div className="bg-gray-100">
@@ -67,6 +74,17 @@ function Home() {
           </div>
 
           <div className="w-full md:w-[45%] relative bg-[url('../coffee-image.jpg')] bg-cover bg-right z-10">
+
+          
+   {
+    visitor &&  <div className="absolute text-center w-[70%] md:my-60 mx-10 mt-[30%] space-x-4 text-white">
+    <span className="animate-fade-in-1 font-semibold text-xl md:text-3xl">Hello,</span>
+    <span className="animate-fade-in-2 text-[#3EB489] font-bold md:text-4xl text-2xl">{visitor}</span> <br />
+    <span className="animate-fade-in-3 font-semibold md:text-3xl text-[#FFB6C1]">Welcome to our website.</span> <br />
+    <span className="animate-fade-in-3 font-semibold md:text-2xl text-[#FFDB58] text-xl">Have a good day. 😊 🤗</span>
+  </div>
+   }      
+
             <div className="px-12 pt-[50%] flex flex-col md:hidden text-white">
               <h2 className="text-3xl font-bold my-8">From Crop to Cup</h2>
               <p className="text-[12px] mb-10">
@@ -94,7 +112,9 @@ function Home() {
               </ul>
             </div>
 
+
             <div className="w-full absolute bottom-0 h-16 bg-orange-950 opacity-80 flex text-white items-center gap-5 px-14 text-sm md:text-[16px]">
+
               <h2>
                 <span className="font-bold">7</span> years experience
               </h2>
