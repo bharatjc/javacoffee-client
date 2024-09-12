@@ -5,10 +5,16 @@ import axios from "axios";
 import LocationDetail from "../Components/LocationDetail";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useSelector } from "react-redux";
 
 const items = 8;
 
 const Location = React.forwardRef(function Location(props, ref) {
+
+   const searchedString = useSelector((store)=>{
+    return store.visitor.value
+   })
+
   const [loading, setLoading] = useState(true);
   const [locations, setLocations] = useState([]);
 
@@ -29,7 +35,17 @@ const Location = React.forwardRef(function Location(props, ref) {
     return paginated;
   };
 
-  const paginatedLocations = getDesiredLocations(locations);
+  const filteredLocations = searchedString
+  ? locations.filter(
+      (location) =>
+        location.location && searchedString &&
+        location.location.toLowerCase().includes(searchedString.toLowerCase())
+    )
+  : locations;
+
+  const finalLocations = filteredLocations.length > 0 ? filteredLocations : locations;
+
+  const paginatedLocations = getDesiredLocations(finalLocations);
 
   return (
     <div
@@ -59,7 +75,7 @@ const Location = React.forwardRef(function Location(props, ref) {
         swipeable={true}
         showThumbs={false}
       >
-        {paginatedLocations.map((page, index) => (
+        {  paginatedLocations.map((page, index) => (
           <div
             key={index}
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-2 gap-10 p-4 mb-20"

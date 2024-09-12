@@ -5,10 +5,15 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import MenuDetail from '../Components/MenuDetail';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const items = 15; 
 
 const Menu = React.forwardRef(function Menu(props, ref) {
+  const searchedString = useSelector((store)=>{
+    return store.visitor.value
+   })
+   
   const [loading, setLoading] = useState(true)
   const [menus, setMenus] = useState([]);
 
@@ -27,7 +32,18 @@ const Menu = React.forwardRef(function Menu(props, ref) {
     return paginated;
   };
 
-  const paginatedMenus = getDesiredMenus(menus);
+  const filteredMenus = searchedString
+  ? menus.filter(
+      (menu) =>
+        menu.menuName && menu.menuPrice && searchedString &&
+       ( menu.menuName.toLowerCase().includes(searchedString.toLowerCase())) || 
+       (menu.menuPrice && menu.menuPrice.toString().includes(searchedString))
+    )
+  :menus;
+
+  const finalMenus = filteredMenus.length > 0 ? filteredMenus : menus;
+
+  const paginatedMenus = getDesiredMenus(finalMenus);
   return (
     <div ref={ref} className='px-10 w-full my-5 flex flex-col justify-center items-center'>
       <h2 className='text-3xl md:text-4xl font-bold text-black my-10'>Menu</h2>
