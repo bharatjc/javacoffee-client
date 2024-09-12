@@ -68,7 +68,7 @@ function Header({ scrollToSection }) {
        className='text-gray-500 w-[100px] md:w-[100px] outline-none bg-transparent text-sm px-3'/>
       <div className='cursor-pointer flex items-center gap-1 border-[1px] rounded-lg p-[2px]' onClick={featureMe}>
       <FcSearch className='text-white text-2xl border-r-[1px] border-gray-400'/>
-      <p>FeatureMe</p>
+      <p className='text-sm px-1'>FeatureMe</p>
       </div>
       </li>
     </ul>
