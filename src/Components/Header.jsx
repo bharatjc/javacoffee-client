@@ -63,9 +63,9 @@ function Header({ scrollToSection }) {
       <li className='hidden md:block cursor-pointer'>
         <Link to="/contact">Contact</Link></li>
       <li className='flex gap-3 items-center justify-between'>
-      <input type="text" value={visitor}
+      <input type="text" value={visitor} placeholder= "enter name"
             onChange={(e) => setVisitor(e.target.value)}
-       className='w-[100px] md:w-[100px] outline-none bg-transparent text-sm px-3'/>
+       className='text-gray-500 w-[100px] md:w-[100px] outline-none bg-transparent text-sm px-3'/>
       <div className='cursor-pointer flex items-center gap-1 border-[1px] rounded-lg p-[2px]' onClick={featureMe}>
       <FcSearch className='text-white text-2xl border-r-[1px] border-gray-400'/>
       <p>FeatureMe</p>
