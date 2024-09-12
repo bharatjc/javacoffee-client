@@ -51,7 +51,7 @@ function Header({ scrollToSection }) {
       <li className='flex gap-3 items-center justify-between'>
       <input type="search" value={visitor} placeholder= "search"
             onChange={(e) => setVisitor(e.target.value)}
-       className='text-gray-500 w-[100px] md:w-[100px] outline-none bg-transparent text-sm px-3'/>
+       className='text-gray-500 w-[100px] md:w-[125px] outline-none bg-transparent text-sm px-3'/>
       <CiSearch className='text-white text-2xl'/>
       </li>
     </ul>
