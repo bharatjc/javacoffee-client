@@ -5,24 +5,32 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { RiDoubleQuotesL } from "react-icons/ri";
 import { RiDoubleQuotesR } from "react-icons/ri";
 
-const Rating = ({ rating }) => {
-  const generateStars = (rating) => {
-    const totalStars = 5;
-    let stars = '';
+const Rating = ({ rating, className }) => {
+  let stars = '';
 
-    for (let i = 1; i <= totalStars; i++) {
-      stars += i <= rating ? '★' : '☆';
-    }
-    return stars;
-  };
-}
+  if (rating === 1) {
+    stars = '★';
+  } else if (rating === 2) {
+    stars = '★★';
+  } else if (rating === 3) {
+    stars = '★★★';
+  } else if (rating === 4) {
+    stars = '★★★★';
+  } else if (rating === 5) {
+    stars = '★★★★★';
+  } else {
+    stars = '☆☆☆☆☆'; 
+  }
+
+  return <div className={className}>{stars}</div>;
+};
 
 function Testimonial() {
   const [loading, setLoading] = useState(true)
   const [testimonial, setTestimonial] = useState([])
   useEffect(()=>{
     axios.get(`https://himalayanjava-server.onrender.com/customer`).then((res)=>{
-     setTestimonial(res.data.customers[1])
+     setTestimonial(res.data.customers[0])
      setLoading(false)
     })
   },[])
