@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { CiSearch } from "react-icons/ci";
 import { IoMenu } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
+import { BsCart2 } from "react-icons/bs";
 import axios from 'axios';
 import { useDispatch } from "react-redux";
 import { setVisitorName } from '../redux/Slices/visitorSlice';
@@ -20,7 +21,7 @@ function Header({ scrollToSection }) {
 
 
   return (
-    <ul className='px-10 ml-0 md:ml-[250px] h-28 bg-slate-400 flex justify-between md:justify-center gap-12 items-center bg-transparent text-lg text-white z-20'>
+    <ul className='px-10 ml-0 md:ml-[220px] h-28 bg-slate-400 flex justify-between md:justify-center gap-12 items-center bg-transparent text-lg text-white z-20'>
       <IoMenu className='md:hidden block text-xl' onClick={()=>{
         setMenu(!menu)
       }}/>
@@ -51,8 +52,9 @@ function Header({ scrollToSection }) {
       <li className='flex gap-3 items-center justify-between'>
       <input type="search" value={visitor} placeholder= "search"
             onChange={(e) => setVisitor(e.target.value)}
-       className='text-gray-500 w-[100px] md:w-[125px] outline-none bg-transparent text-sm px-3'/>
+       className='text-gray-500 w-[100px] md:w-[120px] outline-none bg-transparent text-sm px-3'/>
       <CiSearch className='text-white text-2xl'/>
+    <Link to="/cart"><BsCart2 className='text-white text-2xl'/></Link>  
       </li>
     </ul>
   )

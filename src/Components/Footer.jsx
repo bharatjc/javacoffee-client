@@ -25,7 +25,7 @@ function Footer({ scrollToSection }) {
             </p>
           </div>
         </div>
-        <div className="w-full hidden lg:block lg:w-[50%] bg-cover">
+        <div className="w-full hidden lg:block lg:w-[55vw] bg-cover">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14129.91953224192!2d85.30406006298125!3d27.702465976799242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19f4bd44ea45%3A0xd39bead883786849!2sHimalayan%20Java%20Coffee%20Putalisadak!5e0!3m2!1sen!2snp!4v1725959104681!5m2!1sen!2snp" className="m-0 p-0 w-[280px] h-[180px] md:w-[600px] md:h-[400px] border-gray-300 border-[1px] rounded-lg" loading="lazy"></iframe>
         </div>
       </div>

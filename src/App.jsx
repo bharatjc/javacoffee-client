@@ -13,6 +13,7 @@ import Review from "./Pages/Review"
 import FAQ from "./Pages/FAQ";
 import About from "./Pages/About";
 import PageNotFound from "./Pages/PageNotFound"
+import Cart from "./Pages/Cart";
 
 function App() {
 
@@ -34,6 +35,10 @@ function App() {
     {
       path: "contact",
       element: <Contact/>,
+    },
+    {
+      path: "cart",
+      element: <Cart/>,
     },
     {
       path: "review",
