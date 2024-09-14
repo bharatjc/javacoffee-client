@@ -58,6 +58,7 @@ const Menu = React.forwardRef(function Menu(props, ref) {
                 <div>
                 <Skeleton className="w-[120px] h-[30px]" />
                 <Skeleton className="w-[100px] h-[30px]" />
+                <Skeleton className="w-[120px] h-[30px]" />
                 </div>
                 
               </div>
@@ -69,7 +70,7 @@ const Menu = React.forwardRef(function Menu(props, ref) {
       {paginatedMenus.map((page, index) => (
           <div key={index} className="bg-orange-50 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:grid-rows-5 gap-y-10 mb-20 p-10 rounded-xl">
             {page.map((menu, menuIndex) => (
-              <MenuDetail key={menuIndex} name={menu.menuName} image={menu.image} price={menu.menuPrice}/>
+              <MenuDetail key={menuIndex} name={menu.menuName} image={menu.image} price={menu.menuPrice} _id={menu._id}/>
             ))}
           </div>
         ))}
