@@ -48,14 +48,14 @@ function handleSubmit(e) {
 
   return (
     <div className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md">
-      <div className='flex items-center mb-10 gap-x-5'>
-      <div className="h-16 w-16 flex items-center bg-cover">
+      <div className='flex justify-center items-center mb-10 gap-x-5'>
+      <div className="h-16 w-16 flex justify-center items-center bg-cover">
            <Link to="/">
            <img src="../himalayanjava-logo.png" alt="" />
            </Link> 
           </div>
-          <h2 className="text-2xl font-bold">Contact Us</h2>
       </div>
+      <h2 className="text-2xl font-bold text-center my-10">Contact Us</h2>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <div>
           <label htmlFor='name' className="block text-sm font-medium text-gray-700 mb-1">
