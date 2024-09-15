@@ -57,7 +57,7 @@ function Header({ scrollToSection }) {
        className='text-gray-500 w-[100px] md:w-[120px] outline-none bg-transparent text-sm px-3'/>
       <CiSearch className='text-white text-2xl'/>
     <Link to="/cart" className='flex'><BsCart2 className='text-white text-2xl'/>
-    <p className="text-[#FB2E86]">({cartItems.length})</p>
+    <p className="text-[#FB2E86]">({ cartItems? cartItems.length:"0"})</p>
     </Link>  
       </li>
     </ul>
