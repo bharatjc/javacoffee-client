@@ -101,7 +101,7 @@ function Cart() {
       <div className="px-10 md:p-28 py-10 rounded-xl">
         <div className="flex flex-col md:flex-row justify-between">
           <div className="w-full md:w-[60%]">
-            <div className="text-slate-400 mb-10">
+            <div className="text-black mb-10">
               <p>Product details :</p>
               <p>
                 You have {cartItems && cartItems.length} products in your cart
@@ -119,7 +119,7 @@ function Cart() {
                   <th className="font-semibold">Total</th>
                 </tr>
               </thead>
-              <tbody className="text-gray-400">
+              <tbody className="text-black">
                 {cartItems &&
                   cartItems.map((item, index) => {
                     return (
@@ -276,15 +276,15 @@ function Cart() {
                 </div>
                 
               </div>
-              <div className="flex justify-between mb-3 text-gray-500">
+              <div className="flex justify-between mb-3 text-black">
                 <h2>Subtotal</h2>
                 <p>₹ {total}</p>
               </div>
-              <div className="flex justify-between mb-3 text-gray-500">
+              <div className="flex justify-between mb-3 text-black">
                 <h2>Shipping</h2>
                 <p>₹ {100}</p>
               </div>
-              <div className="flex justify-between mb-3 text-gray-500">
+              <div className="flex justify-between mb-3 text-black">
                 <h2>Total(Inc.taxes)</h2>
                 <p>₹ {(13 / 100) * total + total + 100}</p>
               </div>
