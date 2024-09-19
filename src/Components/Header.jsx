@@ -23,7 +23,7 @@ function Header({ scrollToSection }) {
 
 
   return (
-    <ul className='px-10 ml-0 md:ml-[230px] h-28 bg-slate-400 flex justify-between md:justify-center gap-12 items-center bg-transparent text-lg text-white z-20'>
+    <ul className='px-10 ml-0 md:ml-[20px] lg:ml-[160px] h-28 bg-slate-400 flex justify-between md:justify-center gap-12 items-center bg-transparent text-lg text-white z-20'>
       <IoMenu className='md:hidden block text-xl' onClick={()=>{
         setMenu(!menu)
       }}/>
@@ -36,6 +36,7 @@ function Header({ scrollToSection }) {
 }}/></li>
 <li className='pl-3 pb-1 mb-5 border-b-[1px]'><button onClick={() => scrollToSection('services')}>Services</button> </li>
 <li className='pl-3 pb-1 mb-5 border-b-[1px]'><button onClick={() => scrollToSection('outlets')}>Outlets</button> </li>
+<li className='pl-3 pb-1 mb-5 border-b-[1px]'><button onClick={() => scrollToSection('menu')}>Menu</button> </li>
 <li className='pl-3 pb-1 mb-5 border-b-[1px]'>
   <Link to="/contact">Contact</Link></li>
   </ul>
@@ -48,7 +49,8 @@ function Header({ scrollToSection }) {
       <img src="../himalayanjava-logo.png" alt="" className='w-full h-full'/>
         </button> 
       </li>
-      <li className='hidden md:block cursor-pointer'><button onClick={() => scrollToSection('outlets')}>Outlets</button></li>
+      <li className='hidden md:block text-gray-500 cursor-pointer'><button onClick={() => scrollToSection('outlets')}>Outlets</button></li>
+      <li className='hidden md:block text-gray-500 lg:text-white cursor-pointer'><button onClick={() => scrollToSection('menu')}>Menu</button></li>
       <li className='hidden md:block cursor-pointer'>
         <Link to="/contact">Contact</Link></li>
       <li className='flex gap-3 items-center justify-between'>

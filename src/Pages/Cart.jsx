@@ -79,7 +79,6 @@ function Cart() {
             autoClose: 2000,
             hideProgressBar: false,
           });
-          console.log("Error:", err);
         }
         setLoading(false);
       });
@@ -89,7 +88,6 @@ function Cart() {
     if (order.cardNo) {  
       axios.get(`https://himalayanjava-server.onrender.com/history/${order.cardNo}`)
         .then((res) => {
-          console.log(res.data.history[0].products)
           setHistories(res.data.history[0].products);
         })
     }
@@ -322,7 +320,8 @@ function Cart() {
               <th className="font-semibold p-2 border-r">Date</th>
               <th className="font-semibold p-2 border-r">Item</th>
               <th className="font-semibold p-2 border-r">Price</th>
-              <th className="font-semibold p-2 border-r">Quantity</th>
+              <th className="hidden md:block font-semibold p-2 border-r">Quantity</th>
+              <th className="block md:hidden font-semibold p-2 border-r">Qty</th>
               <th className="font-semibold p-2 border-r">Total</th>
             </tr>
           </thead>
@@ -334,7 +333,8 @@ function Cart() {
             <td className="p-2 border-r">{history.date.slice(5,10)}</td>
             <td className="p-2 border-r">{history.name}</td>
             <td className="p-2 border-r">{history.price}</td>
-            <td className="p-2 border-r">{history.quantity}</td>
+            <td className="hidden md:block p-2 border-r">{history.quantity}</td>
+            <td className="block md:hidden p-2 border-r">{history.quantity}</td>
             <td className="p-2 border-r">{history.total}</td>
           </tr>
         ))
