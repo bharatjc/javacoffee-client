@@ -13,6 +13,7 @@ function Cart() {
   const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(0);
   const [formErrors, setFormErrors] = useState([]);
+  const [histories, setHistories] = useState([])
 
   const [order, setOrder] = useState({
     customer: "",
@@ -84,6 +85,16 @@ function Cart() {
       });
   };
 
+  useEffect(()=>{
+    if (order.cardNo) {  
+      axios.get(`https://himalayanjava-server.onrender.com/history/${order.cardNo}`)
+        .then((res) => {
+          console.log(res.data.history[0].products)
+          setHistories(res.data.history[0].products);
+        })
+    }
+  },[order.cardNo])
+
   return (
     <div className="h-[100vh]">
       <div className="flex justify-center items-center h-20 bg-gray-500 px-10">
@@ -109,7 +120,7 @@ function Cart() {
             </div>
 
             <table>
-              <thead>
+              <thead className="bg-gray-300">
                 <tr className="grid grid-cols-7 gap-4 my-5 text-sm">
                   <th className="font-semibold">S.N.</th>
                   <th className="col-span-3 font-semibold">Product</th>
@@ -125,7 +136,7 @@ function Cart() {
                     return (
                       <tr
                         key={index}
-                        className="grid grid-cols-7 gap-4 my-2 text-[12px]"
+                        className="grid grid-cols-7 gap-4 my-2 text-[12px] border-x border-b border-gray-300 py-5"
                       >
                         <td className="text-center">{index + 1}.</td>
                         <td className="col-span-3 flex flex-col md:flex-row justify-around gap-2">
@@ -300,6 +311,42 @@ function Cart() {
             </form>
           </div>
         </div>
+      </div>
+      <hr className="w-full border-t-[1px] border-gray-400 my-16" />
+      <div className="px-5 md:px-28">
+        <h2 className="text-3xl text-center font-bold mb-10">Purchase History</h2>
+        <table className="table-auto w-full">
+          <thead className="bg-gray-300">
+            <tr className="text-left text-sm">
+              <th className="font-semibold p-2 border-r">S.N.</th>
+              <th className="font-semibold p-2 border-r">Date</th>
+              <th className="font-semibold p-2 border-r">Item</th>
+              <th className="font-semibold p-2 border-r">Price</th>
+              <th className="font-semibold p-2 border-r">Quantity</th>
+              <th className="font-semibold p-2 border-r">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+          {histories && histories.length > 0 ? (
+        histories.map((history, index) => (
+          <tr key={index} className="border-b border-gray-300 text-sm">
+            <td className="p-2 border-l border-r">{index + 1}</td>
+            <td className="p-2 border-r">{history.date.slice(5,10)}</td>
+            <td className="p-2 border-r">{history.name}</td>
+            <td className="p-2 border-r">{history.price}</td>
+            <td className="p-2 border-r">{history.quantity}</td>
+            <td className="p-2 border-r">{history.total}</td>
+          </tr>
+        ))
+      ) : (
+        <tr>
+          <td colSpan="6" className="text-center p-4 text-gray-500">
+            No purchase history available.
+          </td>
+        </tr>
+      )}
+          </tbody>
+        </table>
       </div>
 
       <hr className="w-full border-t-[1px] border-gray-400 mt-16" />
