@@ -30,7 +30,11 @@ function Header({ scrollToSection }) {
 {
   menu && <ul className='w-1/2 h-full bg-red-950 fixed top-0 left-0 py-5 px-2'>
 <li className='pl-3 pb-1 mb-5 flex justify-between border-b-[1px]'><p>
-  <Link to="/about">About</Link></p> <RxCross2 onClick={()=>{
+<Link to={{ pathname: '/about', state: { scrollToSection } }}>
+  About
+</Link>
+  {/* <Link to="/about">About</Link> */}
+  </p> <RxCross2 onClick={()=>{
   setMenu(!menu)
 }}/></li>
 <li className='pl-3 pb-1 mb-5 border-b-[1px]'><button onClick={() => scrollToSection('services')}>Services</button> </li>
@@ -41,7 +45,12 @@ function Header({ scrollToSection }) {
   </ul>
 }
 
-      <li className='hidden md:block text-gray-500 cursor-pointer'><Link to="/about">About</Link></li>
+      <li className='hidden md:block text-gray-500 cursor-pointer'>
+      <Link to={{ pathname: '/about', state: { scrollToSection } }}>
+ About
+</Link>
+        {/* <Link to="/about">About</Link> */}
+        </li>
       <li className='hidden md:block text-gray-500 cursor-pointer'> <button onClick={() => scrollToSection('services')}>Services</button></li>
       <li className='hidden lg:block h-[74px] w-[70px] bg-cover cursor-pointer'>
       <button onClick={() => scrollToSection('home')}>
