@@ -5,17 +5,14 @@ function FAQ() {
   return (
     <div>
       <div className="px-5 md:px-10 bg-gray-500">
-        <div className="flex md:justify-center gap-x-5 items-center h-20">
+        <div className="flex justify-center gap-x-5 items-center h-20">
           <div className="h-16 w-16 flex items-center bg-cover">
            <Link to="/"><img src="../himalayanjava-logo.png" alt="" /></Link>
           </div>
-          <h2 className="text-xl md:text-2xl text-amber-950 font-bold">
-          Common Questions
-          </h2>
         </div>
       </div>
-
       <div className="px-5 md:px-16 py-5">
+        <h2 className='text-3xl font-bold text-center my-10 pb-10'>Common Questions</h2>
         <div className="mb-5">
           <h2 className="text-lg font-semibold mb-2">1. What is Himalayan Java Coffee?</h2>
           <p className="text-sm ml-5">Himalayan Java Coffee is a specialty coffee brand that brings you premium coffee made from the finest coffee beans sourced from the Himalayan region. Our mission is to provide an exceptional coffee experience through our unique flavors, ethical sourcing practices, and dedication to quality.</p>
