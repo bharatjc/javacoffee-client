@@ -6,7 +6,6 @@ import { CiSearch } from "react-icons/ci";
 import { IoMenu } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import { BsCart2 } from "react-icons/bs";
-import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux";
 import { setVisitorName } from '../redux/Slices/visitorSlice';
 

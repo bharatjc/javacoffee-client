@@ -21,10 +21,10 @@ function About() {
         </p>
         <div className='flex flex-col md:flex-row w-full justify-center gap-5 my-10'>
           <div className="h-[350px] w-full md:w-[45%] bg-[url('../location.jpg')] bg-cover rounded-sm flex justify-center items-center">
-          <Link to="/outlets" className='text-slate-200 text-2xl font-bold'>Our Location</Link>
+          <h2 className='text-slate-200 text-2xl font-bold'>Our Location</h2>
           </div>
           <div className="h-[350px] w-full md:w-[25%] bg-[url('../coffee.jpg')] bg-cover rounded-sm flex justify-center items-center">
-          <Link to="/menu" className='text-slate-200 text-2xl font-bold'>Menu</Link></div>
+          <h2 className='text-slate-200 text-2xl font-bold'>Menu</h2></div>
         </div>
         <hr className='w-full border-t-[1px] border-gray-400 mt-16' />
         <Footer/>
