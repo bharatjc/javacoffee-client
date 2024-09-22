@@ -119,7 +119,7 @@ function Cart() {
 
             <table>
               <thead className="bg-gray-300">
-                <tr className="grid grid-cols-7 gap-4 my-5 text-sm">
+                <tr className="grid grid-cols-7 gap-4 my-5 text-sm px-2">
                   <th className="font-semibold">S.N.</th>
                   <th className="col-span-3 font-semibold">Product</th>
                   <th className="font-semibold">Price</th>
@@ -134,7 +134,7 @@ function Cart() {
                     return (
                       <tr
                         key={index}
-                        className="grid grid-cols-7 gap-4 my-2 text-[12px] border-x border-b border-gray-300 py-5"
+                        className="grid grid-cols-7 gap-4 my-2 text-[12px] border-x border-b border-gray-300 py-5 px-2"
                       >
                         <td className="text-center">{index + 1}.</td>
                         <td className="col-span-3 flex flex-col md:flex-row justify-around gap-2">

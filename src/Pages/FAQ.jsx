@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Footer from "../Components/Footer";
 
 function FAQ() {
   return (
@@ -34,6 +35,8 @@ function FAQ() {
           <p className="text-sm ml-5">We source our coffee beans from the Himalayan region, known for its rich soil and ideal climate for growing high-quality Arabica coffee. Our beans are carefully handpicked by local farmers and undergo a meticulous selection process to ensure only the best beans are used.</p>
         </div>
       </div>
+      <hr className='w-full border-t-[1px] border-gray-400 mt-16' />
+      <Footer/>
     </div>
   );
 }
